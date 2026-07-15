@@ -1,4 +1,9 @@
-# Entorno para trabajar con NWB / DANDI / Neuropixels
+# ============================================================
+#  Entorno NeuroDataReHack2026 — Pipeline de Forecasting Neural
+#  Dataset: Allen Visual Coding – Neuropixels (DANDI:000021)
+# ============================================================
+
+# ---- Núcleo NWB / DANDI / streaming remoto ----
 pynwb>=2.8
 dandi>=0.62
 remfile>=0.1.13
@@ -6,9 +11,47 @@ h5py>=3.10
 fsspec>=2024.2.0
 aiohttp>=3.9
 requests>=2.31
+
+# ---- Cómputo numérico y datos ----
 numpy>=1.26
 pandas>=2.2
+scipy>=1.11
+
+# ---- Visualización ----
 matplotlib>=3.8
 jupyterlab>=4.0
-# Opcional (Allen Visual Coding con la API nativa de Allen):
-allensdk>=2.16
+
+# ============================================================
+#  NUEVO: Stack de análisis de series temporales / forecasting
+# ============================================================
+
+# Manejo eficiente de spikes + series temporales alineadas
+pynapple>=0.7
+
+# Extracción rápida de características de series temporales (feature matrix X)
+tsfel>=0.1.6
+
+# GLM acelerado con JAX (modelo baseline moderno de neurociencia)
+nemos>=0.1.6
+
+# Deep Learning (RNN: GRU/LSTM) para forecasting autoregresivo
+torch>=2.2
+
+# Modelos específicos de neurociencia sobre PyTorch (POYO, etc.)
+# OJO: en PyPI el paquete se llama 'torch-brain' (import: torch_brain)
+torch-brain>=0.1
+
+# Machine Learning clásico (PCA, splits, métricas R^2)
+scikit-learn>=1.4
+
+# Gradient boosting (modelo comparativo rápido para decoding)
+xgboost>=2.0
+
+# ============================================================
+#  OPCIONAL — API nativa de Allen
+#  ADVERTENCIA: allensdk fija versiones antiguas de numpy/pandas
+#  y suele ENTRAR EN CONFLICTO con torch / el stack moderno.
+#  No es necesario para el pipeline (usamos streaming vía pynwb).
+#  Instálalo en un entorno separado sólo si lo necesitas.
+# ============================================================
+# allensdk>=2.16
